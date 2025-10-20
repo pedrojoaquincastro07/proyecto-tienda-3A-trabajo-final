@@ -7,6 +7,7 @@
 
   <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css" />
@@ -38,16 +39,39 @@
   <!-- HERO -->
   <header class="hero-3a hero-compact bg-gradient-3a text-white">
     <div class="container text-center">
+      <span class="badge-soft mb-2">Visítanos cuando quieras</span>
       <h1 class="h3 fw-bold mb-1">¿Dónde estamos?</h1>
       <p class="mb-0">Encuéntranos fácilmente y ven por tu pedido</p>
     </div>
   </header>
 
   <!-- MAPA -->
-  <main class="container my-4">
-    <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+  <main class="container my-4 my-md-5">
+    <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-4" data-aos="zoom-in">
       <div class="card-body p-0">
         <div id="map" class="map-3a"></div>
+      </div>
+    </div>
+
+    <div class="glass-card p-4 p-lg-5" data-aos="fade-up">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-6">
+          <h2 class="h4 fw-bold mb-3">Horarios y contacto</h2>
+          <ul class="list-unstyled text-muted lh-lg mb-0">
+            <li>📍 Av. Micaela Bastidas – Independencia, Lima</li>
+            <li>⏰ Lunes a Domingo de 8:00 a 21:00</li>
+            <li>☎️ Central telefónica: (01) 555 4321 · WhatsApp: 987 654 321</li>
+            <li>🚘 Estacionamiento privado y recojo en puerta</li>
+          </ul>
+        </div>
+        <div class="col-lg-6">
+          <div class="feature-card h-100">
+            <div class="feature-icon">🧭</div>
+            <h3 class="h5 fw-bold">Cómo llegar</h3>
+            <p class="text-muted">Estamos a media cuadra del paradero Estación UNI del Metropolitano. Si vienes en auto, ingresa por la Av. Túpac Amaru y gira en Jr. Tomas Valle.</p>
+            <a class="btn btn-primary" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=-12.046374,-77.042793">Abrir en Google Maps</a>
+          </div>
+        </div>
       </div>
     </div>
   </main>
@@ -87,6 +111,7 @@
   <script>window.initMap = () => initMap3A();</script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAc-ENWFjuZnPoF-Aws5cqkleJKqvF63LU&callback=initMap"></script>
 
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.js"></script>
   <script src="assets/js/productos.js"></script>
   <script src="assets/js/carrito.js"></script>
   <script src="assets/js/script.js"></script>
