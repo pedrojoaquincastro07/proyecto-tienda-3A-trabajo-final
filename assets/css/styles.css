@@ -137,16 +137,24 @@ a:hover{ color: var(--brand-2); }
 }
 
 .tag-cloud .tag{
+  display: inline-flex;
+  align-items: center;
   background: rgba(79,70,229,.08);
   color: var(--brand-3);
   border-radius: 999px;
   padding: .45rem 1.1rem;
   font-weight: 600;
   font-size: .95rem;
-  transition: transform .2s ease, background .2s ease;
+  text-decoration: none;
+  transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
 }
 
-.tag-cloud .tag:hover{ background: rgba(79,70,229,.15); transform: translateY(-2px); }
+.tag-cloud .tag:hover,
+.tag-cloud .tag:focus{
+  background: rgba(79,70,229,.15);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(79,70,229,.18);
+}
 
 .glass-card{
   background: rgba(255,255,255,.78);

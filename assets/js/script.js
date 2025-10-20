@@ -2,6 +2,63 @@
 const $  = (s, r=document)=> r.querySelector(s);
 const $$ = (s, r=document)=> Array.from(r.querySelectorAll(s));
 
+const CATEGORY_INFO = {
+  'lacteos': {
+    name: 'Lácteos',
+    description: 'Encuentra leche, yogurt y productos frescos listos para tu refri.',
+    summary: 'Elige entre presentaciones en caja, bolsa o tarro con marcas de confianza.',
+    badge: 'Lácteos en oferta'
+  },
+  'granos-cereales': {
+    name: 'Granos & Cereales',
+    description: 'Arma desayunos y guarniciones nutritivas con nuestra selección de granos.',
+    summary: 'Combina arroz, avena, cereales y quinua para rendir toda la semana.',
+    badge: 'Despensa energética'
+  },
+  'conservas': {
+    name: 'Conservas',
+    description: 'Abre y sirve: pescados, frutas y menestras listas cuando lo necesites.',
+    summary: 'Perfectas para ahorrar tiempo y mantener tu alacena siempre abastecida.',
+    badge: 'Conservas destacadas'
+  },
+  'bebidas': {
+    name: 'Bebidas',
+    description: 'Café, jugos, energizantes y agua mineral para cada momento del día.',
+    summary: 'Refresca tu hogar con packs prácticos y sabores que gustan a todos.',
+    badge: 'Bebidas favoritas'
+  },
+  'snacks': {
+    name: 'Snacks',
+    description: 'Dulces y salados para compartir en casa, la oficina o el colegio.',
+    summary: 'Descubre galletas, frutos secos y chocolates con precios especiales.',
+    badge: 'Snacks para picar'
+  },
+  'limpieza': {
+    name: 'Limpieza',
+    description: 'Mantén tu hogar impecable con detergentes, lavavajillas y más.',
+    summary: 'Productos efectivos con aromas frescos para cada habitación.',
+    badge: 'Aliados de limpieza'
+  },
+  'despensa-saludable': {
+    name: 'Despensa saludable',
+    description: 'Ingredientes nutritivos para cuidar a tu familia día a día.',
+    summary: 'Lentejas, granola, semillas y aceites premium con beneficios reales.',
+    badge: 'Vida saludable'
+  },
+  'salsas': {
+    name: 'Salsas',
+    description: 'Realza tus platos con salsas clásicas y especiales listas para usar.',
+    summary: 'Mayonesa, mostaza y ajíes con el toque perfecto para cada receta.',
+    badge: 'Salsas irresistibles'
+  },
+  'panaderia': {
+    name: 'Panadería',
+    description: 'Panes, bollos y masas listas para acompañar tus comidas.',
+    summary: 'Calienta y sirve panes frescos en cuestión de minutos.',
+    badge: 'Reciente de panadería'
+  }
+};
+
 // ====== Comunes: Offcanvas carrito ======
 function renderOffcanvasCart(){
   const items = Cart.items();
@@ -98,6 +155,63 @@ function renderHomeGrid(){
   `).join('');
 
   $$('#homeGrid [data-add]').forEach(btn=>{
+    btn.addEventListener('click', ()=> Cart.add(btn.dataset.add, 1));
+  });
+}
+
+function renderCategoria(){
+  if(document.body.dataset.page !== 'categoria') return;
+
+  const params = new URLSearchParams(location.search);
+  const slug = params.get('cat') || '';
+  const info = CATEGORY_INFO[slug] || {
+    name: 'Categoría destacada',
+    description: 'Explora productos seleccionados y añádelos a tu carrito con un solo clic.',
+    summary: 'Visita el catálogo para descubrir aún más ofertas y variedades.',
+    badge: 'Ofertas disponibles'
+  };
+
+  $('#categoryTitle')?.textContent = info.name;
+  $('#categoryDescription')?.textContent = info.description;
+  $('#categorySummary')?.textContent = info.summary;
+  $('#categoryBadge')?.textContent = info.badge;
+  if(info.name) document.title = `3A - ${info.name}`;
+
+  const grid = $('#categoryProducts');
+  const empty = $('#categoryEmpty');
+  if(!grid || !empty) return;
+
+  const list = window.PRODUCTS.filter(p => p.categoria === slug);
+  if(list.length === 0){
+    grid.innerHTML = '';
+    empty.classList.remove('d-none');
+    return;
+  }
+
+  empty.classList.add('d-none');
+  grid.innerHTML = list.map(p => `
+    <div class="col-6 col-md-4 col-lg-3">
+      <div class="card h-100">
+        <div class="ratio ratio-1x1">
+          <a href="producto.html?id=${p.id}" class="d-block">
+            <img src="${p.img}" alt="${p.nombre}" class="p-3" style="object-fit:contain;" loading="lazy"
+              onerror="this.onerror=null;this.src='https://via.placeholder.com/500x500?text=${encodeURIComponent(p.nombre)}';">
+          </a>
+        </div>
+        <div class="card-body d-flex flex-column">
+          <strong class="mb-1">${p.nombre}</strong>
+          <span class="mb-2 prod-price">${money(p.precio)}</span>
+          <p class="text-muted small mb-3">${p.desc}</p>
+          <div class="d-grid gap-2 mt-auto">
+            <a href="producto.html?id=${p.id}" class="btn btn-outline-primary">Ver detalle</a>
+            <button class="btn btn-primary" data-add="${p.id}">Añadir al carrito</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  $$('#categoryProducts [data-add]').forEach(btn=>{
     btn.addEventListener('click', ()=> Cart.add(btn.dataset.add, 1));
   });
 }
@@ -316,5 +430,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
   if(document.body.dataset.page === 'home'){ buildSwiper(); renderHomeGrid(); }
   if(document.body.dataset.page === 'catalogo'){ hookCatalogo(); }
   if(document.body.dataset.page === 'producto'){ renderProducto(); }
+  if(document.body.dataset.page === 'categoria'){ renderCategoria(); }
   if(document.body.dataset.page === 'clientes'){ initClientes(); }
 });
