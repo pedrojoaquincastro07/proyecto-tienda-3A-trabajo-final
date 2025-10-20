@@ -7,6 +7,7 @@
 
   <link rel="icon" href="img/favicon.ico" type="image/x-icon"/>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css"/>
@@ -33,29 +34,58 @@
   </nav>
 
   <header class="hero-3a hero-compact bg-gradient-3a text-white">
-    <div class="container">
-      <h1 class="h3 fw-bold mb-0">Catálogo completo</h1>
+    <div class="container py-2 text-center text-md-start">
+      <span class="badge-soft mb-2">Compra mayorista disponible</span>
+      <h1 class="h3 fw-bold mb-1">Catálogo completo</h1>
+      <p class="mb-0">Filtra por categoría, ordena por precio y arma tu carrito inteligente.</p>
     </div>
   </header>
 
-  <main class="container my-4">
-    <div class="row g-3 align-items-center mb-3">
-      <div class="col-12 col-md-6">
-        <input id="searchInput" type="search" class="form-control form-control-lg" placeholder="Buscar por nombre o categoría..." />
-      </div>
-      <div class="col-6 col-md-3">
-        <select id="sortSelect" class="form-select form-select-lg">
-          <option value="precio-asc">Precio (menor a mayor)</option>
-          <option value="precio-desc">Precio (mayor a menor)</option>
-          <option value="nombre-asc">Nombre (A–Z)</option>
-        </select>
-      </div>
-      <div class="col-6 col-md-3 text-end">
-        <a class="btn btn-outline-light border" data-bs-toggle="offcanvas" href="#offcanvasCart">Ir al carrito</a>
+  <main class="container my-4 my-md-5">
+    <div class="glass-card p-3 p-md-4 p-lg-5 mb-4" data-aos="fade-up">
+      <div class="row g-3 align-items-center">
+        <div class="col-12 col-lg-5">
+          <label for="searchInput" class="form-label fw-semibold mb-1">Encuentra al instante</label>
+          <input id="searchInput" type="search" class="form-control form-control-lg" placeholder="Buscar por nombre o categoría..." />
+        </div>
+        <div class="col-6 col-lg-3">
+          <label for="sortSelect" class="form-label fw-semibold mb-1">Ordenar por</label>
+          <select id="sortSelect" class="form-select form-select-lg">
+            <option value="precio-asc">Precio (menor a mayor)</option>
+            <option value="precio-desc">Precio (mayor a menor)</option>
+            <option value="nombre-asc">Nombre (A–Z)</option>
+          </select>
+        </div>
+        <div class="col-6 col-lg-2 d-flex align-items-end">
+          <a class="btn btn-primary w-100" data-bs-toggle="offcanvas" href="#offcanvasCart">Ir al carrito</a>
+        </div>
+        <div class="col-12 col-lg-2">
+          <small class="text-muted">Tip: escribe “oferta” para ver nuestros combos con descuento.</small>
+        </div>
       </div>
     </div>
 
-    <div id="catalogoGrid" class="row g-3"><!-- JS --></div>
+    <div id="catalogoGrid" class="row g-3" data-aos="fade-up" data-aos-delay="150"><!-- JS --></div>
+
+    <div class="glass-card p-4 p-md-5 mt-5" data-aos="zoom-in">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-6">
+          <h2 class="h4 fw-bold mb-3">Consejos para una compra eficiente</h2>
+          <ul class="mb-0 text-muted small lh-lg">
+            <li>Revisa las etiquetas de <strong>productos destacados</strong> para encontrar precios especiales por temporada.</li>
+            <li>Combina conservas, granos y lácteos para lograr un <strong>stock semanal balanceado</strong>.</li>
+            <li>Guarda tus artículos favoritos en el carrito para recibir <strong>alertas de reposición</strong>.</li>
+          </ul>
+        </div>
+        <div class="col-lg-6">
+          <div class="feature-card h-100 text-white" style="background: linear-gradient(140deg, rgba(0,123,255,.92), rgba(79,70,229,.95));">
+            <h3 class="h5 fw-bold">¿Necesitas asesoría?</h3>
+            <p class="mb-3">Nuestro equipo te ayuda a cotizar pedidos para tu negocio o eventos especiales.</p>
+            <a href="clientes.html" class="btn btn-light text-primary fw-semibold">Contactar asesor</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
 
   <footer class="footer-3a">
@@ -87,6 +117,7 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.js"></script>
   <script src="assets/js/productos.js"></script>
   <script src="assets/js/carrito.js"></script>
   <script src="assets/js/script.js"></script>
