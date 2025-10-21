@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>3A - Categoría</title>
+
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css"/>
+</head>
+<body data-page="categoria">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold text-primary d-flex align-items-center gap-2" href="index.html">
+        <img src="img/logo-3a.jpeg" alt="3A" style="height:28px;width:auto;"> 3A Abarrotes
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav3A"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="nav3A">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="catalogo.html">Catálogo</a></li>
+          <li class="nav-item"><a class="nav-link" href="ubicacion.html">Ubicación</a></li>
+          <li class="nav-item"><a class="nav-link" href="clientes.html">Clientes</a></li>
+          <li class="nav-item">
+            <a class="btn btn-primary ms-lg-2" data-bs-toggle="offcanvas" href="#offcanvasCart">Carrito <span id="cartBadge" class="badge text-bg-light ms-1">0</span></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero-3a hero-compact bg-gradient-3a text-white">
+    <div class="container py-3">
+      <div class="d-flex flex-column gap-2 text-center text-md-start">
+        <span class="badge-soft align-self-md-start" id="categoryBadge">Descubre las mejores ofertas</span>
+        <h1 class="h3 fw-bold mb-0" id="categoryTitle">Categoría</h1>
+        <p class="mb-0" id="categoryDescription">Explora productos seleccionados y añádelos a tu carrito con un solo clic.</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="container my-4 my-md-5">
+    <div class="glass-card p-3 p-md-4 p-lg-5 mb-4" data-aos="fade-up">
+      <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+        <div>
+          <h2 class="h4 fw-bold mb-1">Ofertas de temporada</h2>
+          <p class="mb-0 text-muted" id="categorySummary">Llévate combos especiales y abastece tu hogar sin salir de casa.</p>
+        </div>
+        <a class="btn btn-outline-primary" href="catalogo.html">Ver catálogo completo</a>
+      </div>
+    </div>
+
+    <div id="categoryProducts" class="row g-3" data-aos="fade-up" data-aos-delay="100"><!-- JS --></div>
+    <div id="categoryEmpty" class="text-center text-muted py-5 d-none">
+      <h2 class="h5 fw-semibold mb-2">No encontramos productos para esta categoría.</h2>
+      <p class="mb-3">Te invitamos a volver al catálogo y seguir descubriendo más opciones.</p>
+      <a href="catalogo.html" class="btn btn-primary">Ir al catálogo</a>
+    </div>
+  </main>
+
+  <footer class="footer-3a">
+    <div class="container d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2">
+      <span>© 2025 3A Abarrotes</span>
+      <small class="text-secondary">Tu tienda de confianza todos los días</small>
+    </div>
+  </footer>
+
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCart">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title">Tu carrito</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column">
+      <div id="cartItems" class="mb-3"></div>
+      <div class="mt-auto">
+        <div class="d-flex justify-content-between"><span>Subtotal</span><strong id="cartSub">S/ 0.00</strong></div>
+        <div class="d-flex justify-content-between"><span>IGV (18%)</span><strong id="cartIGV">S/ 0.00</strong></div>
+        <hr/>
+        <div class="d-flex justify-content-between fs-5"><span>Total</span><strong id="cartTotal">S/ 0.00</strong></div>
+        <div class="d-grid gap-2 mt-3">
+          <button id="btnCheckout" class="btn btn-primary">Comprar ahora</button>
+          <button id="btnClear" class="btn btn-outline-danger">Vaciar carrito</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.js"></script>
+  <script src="assets/js/productos.js"></script>
+  <script src="assets/js/carrito.js"></script>
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
